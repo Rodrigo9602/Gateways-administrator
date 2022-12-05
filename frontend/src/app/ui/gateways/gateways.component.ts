@@ -11,7 +11,7 @@ import { Gateway } from 'src/app/models/gateway.model';
   providers: [GatewayService],
 })
 export class GatewaysComponent implements OnInit {
-public devices;
+public devices= Device;
 public date = new Date();
 public gateways: Gateway[];
 public addDevice;
@@ -22,16 +22,10 @@ public delDevice;
 
   ) {  
     
-    this.devices = [
-      new Device(86588774,'Intel',this.date,'Online'),
-      new Device(87744556,'Samsung',this.date,'Offline'),
-      new Device(83588996,'RockChip',this.date,'Online'),
-      new Device(84411225,'Surgea',this.date,'Offline'),
-    ];
+    
     this.gateways = [
-      new Gateway('tegsgej-r45wyn-36hhsu', 'Gateway_0','192.168.42.584',this.devices),
-      new Gateway('wwerwe-36hhsu-ew4sd', 'Gateway_1','192.168.42.584',this.devices),
-      new Gateway('wwerwe-ew4sd-wret5gg', 'Gateway_2','192.168.42.584',this.devices),
+      new Gateway('', '','',[]),
+      
     ]
     this.addDevice='';
     this.delDevice='';
