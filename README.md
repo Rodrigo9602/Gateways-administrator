@@ -1,14 +1,14 @@
 # Gateway's administrator
 
 # Presentation
-Web application for the administration of gateways, built on the basis of javascript frameworks, intended for the management, creation and updating of gateways as well as the peripheral devices associated with them. The fundamental objectives that are pursued after the implementation of this project are based on the need to create a web tool for the management of gateways or master devices, as will also be defined, capable of managing the entire process from the creation of a gateway, its update, its information displayed in detail and in turn guarantee a simple and intuitive environment for the user.
+Web application for the administration of gateways, built on the basis of javascript frameworks, intended for the management, creation and updating of gateways as well as the peripheral devices associated with them. The fundamental objectives that are pursued after the implementation of this project are based on the need to create a web tool for the management of gateways or master devices, as it will also be defined, capable of managing the entire process from the creation of a gateway, its update, its information displayed in detail and in turn guarantee a simple and intuitive environment for the user.
 
 # Product Backlog
 > Management of gateways able to control and associate to peripheral devices following a predefined structure.
-> Storage gateways objects in a database or locally, as well as the peripheral devices associated with them.
+> Storage gateway objects in a database or locally, as well as the peripheral devices associated with them.
 > Operation for displaying information about all stored gateways (and their devices).
-> Operation for desplaying details for a single gateway.
-> Operations for add and delete devices from an especific gateway.
+> Operation for displaying details for a single gateway.
+> Operations for add and delete devices from an specific gateway.
 
 # Main functionalities developed
 1. Creation and display of gateways storaged.
@@ -83,14 +83,13 @@ $ npm start
 
 
 # Documantation Rules
-1. For establish pending code please use the tag PENDING at the beggining of each comment.
+1. To establish pending code please use the tag PENDING at the beggining of each comment.
 2. All functions must be documented with a general description.
 3. All files must contain a general description and authors name for future reference.
 
 # Improvement Aspects
-1. Implement the functionality for delete a gateway in case of being necessary.
+1. Implement the functionality to delete a gateway in case of being necessary.
 2. Update the ui styles.
-3. Add referencial links for about us information and other views on th frontend.
-4. Optimize the use of styles for all components.
-5. Add the visualation of message from backend in case of error.
-6. Add the functionality for update the status of a single device on a specific gateway.
+3. Optimize the use of styles for all components.
+4. To create a user system for assosiation between specific gateways and an user.
+5. Add the functionality for update the status of a single device on a specific gateway.
