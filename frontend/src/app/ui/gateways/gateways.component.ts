@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GatewayService } from 'src/app/services/gateway.service';
 import { Device } from 'src/app/models/device.model';
 import { Gateway } from 'src/app/models/gateway.model';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-gateways',
@@ -31,10 +31,13 @@ public delDevice;
     this.delDevice='';
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void {        
     this._gatewayService.getGateways().subscribe(
       res =>{
         this.gateways = res.gateways;
+        if(this.gateways.length==0){
+          Swal.fire('Ops', 'It seems you dont have any gateway saved...for now', 'info');
+        }
       },
       err=>{
        alert(err.message);
