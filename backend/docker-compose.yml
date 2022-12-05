@@ -7,7 +7,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - mongodb-data
+      - ./api/app:/mongodb-data
 volumes:
   mongodb-data:
     driver: local
