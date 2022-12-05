@@ -24,7 +24,7 @@ Web application for the administration of gateways, built on the basis of javasc
 
 
 ### Installation procedure
- ```bash
+```bash
 # in the root folder of the project 
 # on mac or Linux
 $ cd ./backend
@@ -38,7 +38,7 @@ $ npm start
 $ cd ./frontend
 $ npm i #install dependencies
 $ npm start
- ```
+```
 
 
 
@@ -57,29 +57,29 @@ $ npm start
 
 # Code Arquitecture
 - *frontend folder* : Folder used for store all files related to the development of the user interface.
-    -*package.json* : configuration of dependencies and scripts for start, build and test the app.
-    -*src* : Folder used to store all the components, data models, services and app routing, resources and global styles.
-        -*app*: Folder used to mainly store components, data models, services and app routing.       
-            -*app.routing.ts* : File for routes configurations and administration.
-            -*components folder* : folder for store all components
-            -*services folder*: Folder for store the apps services
-                -*gateway.service.ts*: Services for http request related to gateways management.
-            -*UI folder* : UI related components.
+    - *package.json* : configuration of dependencies and scripts for start, build and test the app.
+    - *src* : Folder used to store all the components, data models, services and app routing, resources and global styles.
+    - *app*: Folder used to mainly store components, data models, services and app routing.
+    - *app.routing.ts* : File for routes configurations and administration.
+    - *components folder* : folder for store all components
+    - *services folder*: Folder for store the apps services
+    - *gateway.service.ts*: Services for http request related to gateways management.
+    - *UI folder* : UI related components.
 
 - *backend folder* : Folder used for store all files related to the development of the API REST.
-     -*package.json* : configuration of dependencies and scripts for start, build and test the app.
-     -*app.js* : file used to establish the prefixes to the different routes of the Api and for the configuration of the Cors.
-     -*index.js* :  started point file, used to stablish communication with database server.
-     -*test folder* : Folder used for store the gateway.test file where all unit test are developed.
-     -*routes* :  Forlder use to storage the file destined to resolve the http request made to our API
-     -*models folder*: Folder used to store the data models used.
-     -*functions* :  Folder used to store functions for differents tasks.
-        -*addDevices.function.js* : function used to add a device to a concret gateway's devices array.
-        -*create_uid.js* : function used to generate a random 8 digits number for devices unique identificator.
-        -*deleteDevices.function.js* : function used to delete a device from a concret gateway's devices array and also delete the device from device's collection.
-        -*saveDevices.js* : function used to save a device on device's collection.
-    -*controllers folder* : Folder used for store gateway's controller.
-        -*gateway.controller.js* : Controller for gateways, all method for the Api are implemented on this file.
+    - *package.json* : configuration of dependencies and scripts for start, build and test the app.
+    - *app.js* : file used to establish the prefixes to the different routes of the Api and for the configuration of the Cors.
+    - *index.js* :  started point file, used to stablish communication with database server.
+    - *test folder* : Folder used for store the gateway.test file where all unit test are developed.
+    - *routes* :  Forlder use to storage the file destined to resolve the http request made to our API
+    - *models folder*: Folder used to store the data models used.
+    - *functions* :  Folder used to store functions for differents tasks.
+    - *addDevices.function.js* : function used to add a device to a concret gateway's devices array.
+    - *create_uid.js* : function used to generate a random 8 digits number for devices unique identificator.
+    - *deleteDevices.function.js* : function used to delete a device from a concret gateway's devices array and also delete the device from device's collection.
+    - *saveDevices.js* : function used to save a device on device's collection.
+    - *controllers folder* : Folder used for store gateway's controller.
+    - *gateway.controller.js* : Controller for gateways, all method for the Api are implemented on this file.
 
 
 # Documantation Rules
@@ -94,11 +94,3 @@ $ npm start
 4. Optimize the use of styles for all components.
 5. Add the visualation of message from backend in case of error.
 6. Add the functionality for update the status of a single device on a specific gateway.
-
- 
-
-
-
-
-
-
