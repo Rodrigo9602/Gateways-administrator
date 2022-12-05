@@ -89,7 +89,7 @@ describe('Gateways api', () => {
             gatewayParams.name += String(count); 
             gatewayParams.devices[0].vendor = 'Ryzen';                       
             let saveResponse = await request(app).post('/gateways/').send(gatewayParams);             
-            serial = saveResponse.body.g[0].serial;
+            serial = saveResponse.body.gateway[0].serial;
             let response = await request(app).get('/gateways/'+serial).send();        
             expect(response.status).toBe(200);    
             expect(response.headers['content-type']).toContain('json');             
@@ -119,7 +119,7 @@ describe('Gateways api', () => {
             count = Math.floor(Math.random() * 1000);
             gatewayParams.name += String(count);
             let saveResponse = await request(app).post('/gateways/').send(gatewayParams);             
-            name = saveResponse.body.g[0].name;
+            name = saveResponse.body.gateway[0].name;
 
             let response = await request(app).get('/gateways/find/'+name).send();        
             expect(response.status).toBe(200);    
@@ -173,7 +173,7 @@ describe('Gateways api', () => {
             gatewayWithTenDevices.name+= String(count);
             let saveResponse = await request(app).post('/gateways/').send(gatewayWithTenDevices);
             expect(saveResponse.status).toBe(200);            
-            let response = await request(app).put('/gateways/'+saveResponse.body.g[0].serial).send([{"vendor":"Test", "status":"Online"}]);
+            let response = await request(app).put('/gateways/'+saveResponse.body.gateway[0].serial).send([{"vendor":"Test", "status":"Online"}]);
              expect(response.status).toBe(400);
             expect(response.body.message).toBe('Limit of devices reached');
         });
