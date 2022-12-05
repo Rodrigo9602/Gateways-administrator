@@ -2,20 +2,18 @@
 
 var validator = require('validator');
 var Gateway = require('../models/gateway.model');
-var Device = require('../models/device.model');
 const { v4: uuidv4 } = require('uuid');
-var getUID = require('../functions/create_uid.function');
 var saveDevices = require('../functions/saveDevices.function');
 var add = require('../functions/addDevices.function');
 var del = require('../functions/deleteDevices.function');
-const { findOneAndUpdate, findOneAndDelete } = require('../models/device.model');
+
 
 const controller = {
     save: async (req, res) => {
 
         // get the gateway object on the body
-        var params = req.body;
-        var devices = [];
+        let params = req.body;
+        let devices = [];
         // check if gateway already exits on database
         Gateway.find({ name: params.name }, async (error, gateway) => {
             if (error) {
@@ -42,7 +40,7 @@ const controller = {
             }
             if (nameValidate && ipv4) {
                 // create an gateway object
-                var gateway = new Gateway();
+                let gateway = new Gateway();
 
                 // set the values for every field of the object
                 gateway.serial = uuidv4();
@@ -63,13 +61,13 @@ const controller = {
                         gateway.devices = devices;
                         gateway = await gateway.save();
 
-                        Gateway.find({ serial: gateway.serial }).populate('devices').then(g =>
+                        gateway= await Gateway.find({ serial: gateway.serial }).populate('devices');
                             res.status(200).send({
                                 status: 'success',
                                 message: 'Gateway saved',
-                                g
+                                gateway
                             })
-                        );
+                       
                     }
 
                 } catch (err) {
@@ -177,8 +175,8 @@ const controller = {
         let device = req.body;
         try {
             /*not need to validate serialNumber because it is sended from frontend without user intervention*/
-            var vendorValidation = !validator.isEmpty(device[0].vendor);
-            var statusValidation = !validator.isEmpty(device[0].status);
+           var vendorValidation = !validator.isEmpty(device[0].vendor);
+           var statusValidation = !validator.isEmpty(device[0].status);
         } catch (err) {
             return res.status(500).send({
                 status: 'error',
@@ -187,7 +185,15 @@ const controller = {
         }
         if (vendorValidation && statusValidation) {
             // get searched gateway and new devices
+            try{
             data = await add(serialNumber, device);
+            }catch(err){
+                res.status(500).send({
+                    status: 'error',
+                    message: err.message,
+
+                });
+            }
             if (data.length == 0) {
                 res.status(404).send({
                     status: 'error',
@@ -234,8 +240,15 @@ const controller = {
         // get device uid
         let deviceUID = req.body.UID;
         // invoke del function del
+        try{
         data = await del(serialNumber, deviceUID);
+        }catch(err){
+            res.status(500).send({
+                status: 'error',
+                message: err.message,
 
+            }); 
+        }
         if (data[0] === 'Gateway not found') {
             res.status(404).send({
                 status: 'error',

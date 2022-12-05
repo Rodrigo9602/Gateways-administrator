@@ -8,11 +8,9 @@ const add = async (serialNumber, device) => {
     let gateway = new Gateway();
 
 
-    try {
-        gateway = await Gateway.find({ serial: serialNumber });
-    } catch (err) {
-        return ['Access error'];
-    }
+    
+    gateway = await Gateway.find({ serial: serialNumber });
+    
     if (gateway.length == 0) {
         return gateway;
     }
@@ -25,7 +23,6 @@ const add = async (serialNumber, device) => {
         else {
             devices = await saveDevices(device);
             newDevices = gateway[0].devices.push(devices[0]._id);
-
             return gateway[0].devices;
         }
     }

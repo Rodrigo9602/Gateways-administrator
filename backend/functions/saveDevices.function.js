@@ -10,7 +10,7 @@ const saveDevices =  async (devices) => {
     let createdDevices = [];
     
         // validate data
-        for (var i=0; i< devices.length; i++){
+        for (let i=0; i< devices.length; i++){
             try{
             var vendorValidate = !validator.isEmpty(devices[i].vendor);
             var statusValidate = !validator.isEmpty(devices[i].status);

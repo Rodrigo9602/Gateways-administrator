@@ -1,13 +1,13 @@
 'use strict'
 
-var possible = "0123456789";
+const possible = "0123456789";
 
-const getRandomNumber =()=> {
+const getRandomChar =()=> {
     return possible.charAt(Math.floor(Math.random()*possible.length));
 }
 
 const getFourRandom=() => {
-    return getRandomNumber() + getRandomNumber() + getRandomNumber() + getRandomNumber() + getRandomNumber() + getRandomNumber()+ getRandomNumber() + getRandomNumber();
+    return getRandomChar() + getRandomChar() + getRandomChar() + getRandomChar() + getRandomChar() + getRandomChar()+ getRandomChar() + getRandomChar();
 }
 
 const getUID=()=>{

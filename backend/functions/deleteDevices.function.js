@@ -4,16 +4,12 @@ let Gateway = require('../models/gateway.model');
 let Device = require('../models/device.model');
 
 const del = async (serialNumber, UID) => {
-    let gateway = new Gateway();
-    let device = new Device();
+    let gateway = new Gateway();   
     let gatewayDevices = [];
     let i;
 
-    try {
-        gateway = await Gateway.find({ serial: serialNumber }).populate('devices');
-    } catch (err) {
-        return ['Access error'];
-    }
+    
+    gateway = await Gateway.find({ serial: serialNumber }).populate('devices');   
     if (gateway.length == 0) {
         return ['Gateway not found'];
     } else {
@@ -27,13 +23,11 @@ const del = async (serialNumber, UID) => {
             }
         }
         gatewayDevices.splice(i, 1);
-
-
-        try {
-            Device.findOneAndDelete({ uid: UID });
-        } catch (err) {
-            return ['Access error'];
-        }
+        
+        Device.findOneAndDelete({ uid: UID });
+       
+            
+       
 
 
         return gatewayDevices;
